@@ -29,9 +29,9 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser(
         description="CLI tool to solve Quadratic equations.")
-    parser.add_argument("-a", "--aCoefficient",
+    parser.add_argument("-a", "--aCoefficient", metavar="a-coefficient",
                         type=float, help="Coefficient of x²")
-    parser.add_argument("-b", "--bCoefficient",
+    parser.add_argument("-b", "--bCoefficient", metavar="b-coefficient",
                         type=float, help="Coefficient of x")
     parser.add_argument("-c", "--constant", type=float, help="Constant")
     args = parser.parse_args()
