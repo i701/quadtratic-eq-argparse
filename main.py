@@ -1,5 +1,6 @@
 import argparse
 import cmath
+import math
 from prettytable import PrettyTable
 
 
@@ -16,11 +17,13 @@ def get_solutions(descriminant: float, a: float | int, b: float | int) -> float 
     Returns both positive and negative solution for the quadratic equation.
     """
     try:
+        solutionOne = (-b-math.sqrt(descriminant)) / (2*a)
+        solutionTwo = (-b+math.sqrt(descriminant)) / (2*a)
+        return (solutionOne, solutionTwo)
+    except ValueError:
         solutionOne = (-b-cmath.sqrt(descriminant)) / (2*a)
         solutionTwo = (-b+cmath.sqrt(descriminant)) / (2*a)
         return (solutionOne, solutionTwo)
-    except ValueError:
-        print("Math error.")
 
 
 def main() -> None:
