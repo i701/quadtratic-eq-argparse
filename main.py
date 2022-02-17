@@ -9,18 +9,14 @@ SUPERSCRIPT = {
 
 
 def formatNumber(num):
-    if num % 1 == 0:
-        return int(num)
-    else:
-        return num
+    return int(num) if num % 1 == 0 else num
 
 
 def get_descriminant(a: float | int, b: float | int, c: float | int) -> float | int:
     """
     Function to calculate and return the descriminant.
     """
-    descriminant = (b**2) - (4*a*c)
-    return descriminant
+    return (b**2) - (4*a*c)
 
 
 def get_solutions(descriminant: float, a: float | int, b: float | int) -> float | int:
@@ -54,12 +50,10 @@ def get_equation(a: float | int, b: float | int, c: float | int) -> str:
 
 def print_solution(sol1: float | int, sol2: float | int, equation=None) -> None:
     x = PrettyTable()
-    if equation:
-        x.field_names = ["Equation", equation]
-    else:
-        x.field_names = ["Solution", "Value"]
-    x.add_row(["Soltion 1:", sol1])
-    x.add_row(["Soltion 2:", sol2])
+    x.field_names = ["Equation", equation] if equation else [
+        "Solution", "Value"]
+    x.add_row(["Soltion 1:", sol2])
+    x.add_row(["Soltion 2:", sol1])
     print(x)
 
 
@@ -69,7 +63,7 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser(
         description="CLI tool to solve Quadratic equations.")
-    parser.add_argument("-a", "--aCoefficient", metavar="a-coefficient",
+    parser.add_argument("-a", "--aCoefficient", metavar="a-coefficient", default=1,
                         type=float, help="Coefficient of x²")
     parser.add_argument("-b", "--bCoefficient", metavar="b-coefficient",
                         type=float, help="Coefficient of x")
